@@ -32,7 +32,9 @@
           "label": "Password",
           "placeholder": "Enter your password",
           "reminder": "Forgot password?"
-        },
+        }
+      },
+      "buttons": {
         "login": "Log in"
       },
       "register": {
@@ -42,6 +44,7 @@
     },
     "register": {
       "title": "Registration",
+      "description": "",
       "help": "It’s free and only takes a minute (depends on your abilities)",
       "fields": {
         "display_name": {
@@ -55,12 +58,26 @@
         "password": {
           "label": "Password",
           "help": "Passwords must contain at least eight characters, including at least 1 letter and 1 number"
+        },
+        "captcha": {
+          "label": "Solve the problem",
+          "placeholder": "Your answer",
+          "help": "In the answer, specify an integer."
         }
+      },
+      "buttons": {
+        "sign_up": "Sign up"
+      },
+      "terms": {
+        "text": "By clicking “Sign up”, you agree to our {terms_link} and {privacy_link}",
+        "terms": "terms",
+        "privacy": "privacy policy"
       }
     }
   },
   "validations": {
     "required": "This field is required",
-    "email": "This field must be a valid email"
+    "email": "This field must be a valid email",
+    "integer": "This field must be an integer"
   }
 }

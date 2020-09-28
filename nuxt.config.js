@@ -53,12 +53,17 @@ export default {
     "@/assets/styles/main",
     "@/assets/styles/buefy",
     "@mdi/vue/dist/mdi.css",
+    "katex/dist/katex.min.css",
   ],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ["@/plugins/vee-validate", "@/plugins/vue-mdi"],
+  plugins: [
+    "@/plugins/vee-validate",
+    "@/plugins/vue-mdi",
+    "@/plugins/vue-katex",
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -174,5 +179,5 @@ export default {
   },
   router: {
     middleware: ["user"],
-  }
+  },
 }

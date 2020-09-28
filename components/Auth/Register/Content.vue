@@ -14,7 +14,12 @@
           {{ $t("auth.register.help") }}
         </small>
       </div>
-      <ValidationObserver ref="observer" tag="div" class="is-flex fields">
+      <ValidationObserver
+        ref="observer"
+        v-slot="{ handleSubmit }"
+        tag="div"
+        class="is-flex fields"
+      >
         <transition name="fade">
           <b-message v-if="error" type="is-danger" class="mb-4">
             {{ alertText }}
@@ -71,6 +76,56 @@
             :messages="errors"
           />
         </ValidationProvider>
+        <!--  Captcha -->
+        <ValidationProvider
+          v-slot="{ errors }"
+          rules="required|integer"
+          tag="div"
+          class="mb-4"
+        >
+          <cm-input-field
+            v-model="captchaAnswer"
+            :type="{ 'is-danger': errors[0] }"
+            :label="$t('auth.register.fields.captcha.label')"
+            label-for="captcha"
+            :input-placeholder="$t('auth.register.fields.captcha.placeholder')"
+            input-type="number"
+            :help="$t('auth.register.fields.captcha.help')"
+            :messages="errors"
+          >
+            <katex-element
+              :expression="captcha.math"
+              class="is-flex captcha-math colors__background_white py-2 mb-2"
+            />
+          </cm-input-field>
+        </ValidationProvider>
+        <b-button
+          type="is-primary"
+          class="fields__button mt-3"
+          @click="handleSubmit(submitRegister)"
+        >
+          {{ $t("auth.register.buttons.sign_up") }}
+        </b-button>
+        <i18n
+          path="auth.register.terms.text"
+          tag="span"
+          class="is-size-7 mt-5 colors__font_pale-sky"
+        >
+          <nuxt-link
+            slot="terms_link"
+            :to="localePath('terms')"
+            target="_blank"
+          >
+            {{ $t("auth.register.terms.terms") }}
+          </nuxt-link>
+          <nuxt-link
+            slot="privacy_link"
+            :to="localePath('privacy')"
+            target="_blank"
+          >
+            {{ $t("auth.register.terms.privacy") }}
+          </nuxt-link>
+        </i18n>
       </ValidationObserver>
     </div>
   </div>
@@ -105,6 +160,9 @@ export default {
       return ""
     },
   },
+  methods: {
+    async submitRegister() {},
+  },
 }
 </script>
 
@@ -136,6 +194,20 @@ export default {
     .fields {
       flex-direction: column;
       z-index: 2;
+
+      &__button {
+        width: 100%;
+      }
+    }
+
+    .captcha-math {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+
+      & /deep/ .katex {
+        font-size: 1.3em;
+      }
     }
   }
 }

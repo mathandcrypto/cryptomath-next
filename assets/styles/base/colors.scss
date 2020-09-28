@@ -4,7 +4,8 @@ $cm-colors: (
   "shark": #242729,
   "mako": #3c4146,
   "gray-athens": #fafafb,
-  "gray": #999999
+  "gray": #999999,
+  "pale-sky": #6a737c
 );
 
 @mixin cm-font-colors($colors) {

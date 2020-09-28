@@ -4,6 +4,7 @@
       <slot v-if="$slots.label" name="label" />
       <template v-else>{{ label }}</template>
     </label>
+    <slot />
     <b-input
       :id="labelFor"
       v-model="inputValue"

@@ -68,7 +68,7 @@
           class="fields__button"
           @click="handleSubmit(submitLogin)"
         >
-          {{ $t("auth.login.fields.login") }}
+          {{ $t("auth.login.buttons.login") }}
         </b-button>
       </ValidationObserver>
     </div>
