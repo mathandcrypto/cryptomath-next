@@ -1,0 +1,146 @@
+//  Initial variables
+$black: hsl(0, 0%, 2%);
+$white: hsl(0, 0%, 100%);
+$red: hsl(348, 86%, 61%);
+$green: hsl(141, 53%, 53%);
+
+$grey-dark: hsl(0, 0%, 28%);
+$grey-light: hsl(0, 0%, 70%);
+$grey-lighter: hsl(0, 0%, 87%);
+
+$family-sans-serif: "Ubuntu", "Lato", sans-serif;
+
+//  Derived variables
+$primary: hsl(209, 71%, 20%);
+$light: hsl(208, 19%, 84%);
+
+//  Generic variables
+$body-font-size: 1rem;
+
+//  Components variables
+//  Navbar
+$navbar-item-color: $white;
+$navbar-item-hover-color: $grey-light;
+$navbar-item-active-color: $grey-light;
+$navbar-item-hover-background-color: transparent;
+
+//  Button
+$button-family: "Ubuntu-Medium", sans-serif;
+$button-padding-horizontal: 1.5em;
+
+//  Section
+$section-padding: 2rem 0;
+
+//  Box
+$box-radius: 4px;
+$box-shadow: 0px 2px 4px 0px rgba($black, 0.1);
+$box-padding: 1.5rem;
+
+// Import Bulma and Buefy styles
+@import "~bulma/bulma";
+@import "~buefy/src/scss/buefy";
+
+//  Generic styles
+a {
+  transition: color .3s;
+}
+
+//  Navbar styles
+.navbar {
+  & > .container {
+    min-height: auto !important;
+
+    .navbar-brand {
+      margin-left: 0 !important;
+      min-height: auto !important;
+
+      .navbar-item {
+        padding: 0 !important;
+
+        img {
+          max-height: none !important;
+        }
+
+        .title {
+          word-break: keep-all;
+        }
+      }
+    }
+
+    .navbar-menu {
+      margin-right: 0 !important;
+
+      .navbar-start {
+        justify-content: flex-end !important;
+        margin-right: 0 !important;
+        margin-left: auto;
+
+        .navbar-item {
+          padding-top: 0 !important;
+          padding-bottom: 0 !important;
+
+          &:last-child {
+            padding-right: 0;
+          }
+        }
+
+        a.navbar-item, .navbar-link {
+          font-family: "Ubuntu-Medium", sans-serif;
+          font-size: 1.5rem;
+        }
+      }
+
+      .navbar-end {
+        margin-left: 2rem !important;
+        align-items: center;
+      }
+    }
+  }
+}
+
+//  Button styles
+.button {
+  transition: all .3s;
+}
+
+//  Input styles
+.input {
+  transition: border 0.3s;
+  font-family: "Ubuntu-Medium", sans-serif;
+}
+
+//  Field styles
+.field {
+  .messages {
+    @extend .help;
+    flex-direction: column;
+    margin-top: 0.25rem;
+  }
+}
+
+//  Section styles
+.section {
+  flex-grow: 1;
+}
+
+//  Adding some helpers
+.flex-justify-content-between {
+  justify-content: space-between !important;
+}
+
+//  Other styles
+.has-text-danger {
+  svg {
+    path {
+      fill: $red !important;
+    }
+  }
+}
+
+.has-text-success {
+  svg {
+    path {
+      fill: $green !important;
+    }
+  }
+}

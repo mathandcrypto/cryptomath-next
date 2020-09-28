@@ -1,0 +1,37 @@
+$cm-fonts-sans-serif: (
+  "ubuntu": (
+    "light": "Ubuntu-Light",
+    "regular": "Ubuntu-Regular",
+    "medium": "Ubuntu-Medium",
+    "bold": "Ubuntu-Bold",
+  ),
+  "lato": (
+    "light": "Lato-Light",
+    "regular": "Lato-Regular",
+    "bold": "Lato-Bold",
+  ),
+);
+
+$cm-fonts-serif: (
+  "georgia": (
+    "regular": "Georgia-Regular",
+    "bold": "Georgia-Bold",
+  )
+);
+
+@mixin cm-fonts($fonts, $type) {
+  @each $family, $font in $fonts {
+    &__#{$family} {
+      @each $size, $name in $font {
+        &_#{$size} {
+          font-family: $name, $type;
+        }
+      }
+    }
+  }
+}
+
+.fonts {
+  @include cm-fonts($cm-fonts-sans-serif, 'sans-serif');
+  @include cm-fonts($cm-fonts-serif, 'serif');
+}

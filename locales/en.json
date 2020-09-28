@@ -1,0 +1,66 @@
+{
+  "brand": "CryptoMath",
+  "layout": {
+    "header": {
+      "links": {
+        "articles": "Articles",
+        "hubs": "Hubs",
+        "authors": "Authors",
+        "problems": "Problems"
+      },
+      "buttons": {
+        "login": "Log in",
+        "register": "Sign up"
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Log in",
+      "description": "",
+      "alerts": {
+        "user_not_found": "User is not found",
+        "wrong_password": "Wrong password",
+        "internal_error": "Internal login error"
+      },
+      "fields": {
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter your email"
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter your password",
+          "reminder": "Forgot password?"
+        },
+        "login": "Log in"
+      },
+      "register": {
+        "text": "Have no account yet? {link}",
+        "link": "Sign up"
+      }
+    },
+    "register": {
+      "title": "Registration",
+      "help": "It’s free and only takes a minute (depends on your abilities)",
+      "fields": {
+        "display_name": {
+          "label": "Display name",
+          "help": "This name will be visible to other users"
+        },
+        "email": {
+          "label": "Email",
+          "help": "This email address will be linked to your account"
+        },
+        "password": {
+          "label": "Password",
+          "help": "Passwords must contain at least eight characters, including at least 1 letter and 1 number"
+        }
+      }
+    }
+  },
+  "validations": {
+    "required": "This field is required",
+    "email": "This field must be a valid email"
+  }
+}

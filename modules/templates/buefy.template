@@ -1,0 +1,15 @@
+import Vue from 'vue';
+
+<% if (!options.treeShake) { %>
+import Buefy from 'buefy'
+
+Vue.use(Buefy, <%= JSON.stringify(options.constructorOptions, null, 2) %>)
+<%   } else { %>
+import {
+  ConfigProgrammatic,
+  <%= options.components.join(',\n  ') %>
+} from 'buefy';
+
+<%= options.components.reduce((acc, component) => (acc += `Vue.use(${component});\n` ), '') %>
+ConfigProgrammatic.setOptions(<%= JSON.stringify(options.constructorOptions, null, 2) %>)
+<% } %>

@@ -1,0 +1,33 @@
+$cm-colors: (
+  "black": #000000,
+  "white": #FFFFFF,
+  "shark": #242729,
+  "mako": #3c4146,
+  "gray-athens": #fafafb,
+  "gray": #999999
+);
+
+@mixin cm-font-colors($colors) {
+  &__font {
+    @each $name, $value in $colors {
+      &_#{$name} {
+        color: $value !important;
+      }
+    }
+  }
+}
+
+@mixin cm-background-colors($colors) {
+  &__background {
+    @each $name, $value in $colors {
+      &_#{$name} {
+        background-color: $value !important;
+      }
+    }
+  }
+}
+
+.colors {
+  @include cm-font-colors($cm-colors);
+  @include cm-background-colors($cm-colors);
+}
