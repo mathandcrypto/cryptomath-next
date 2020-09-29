@@ -2,3 +2,13 @@
 @import 'base/colors';
 @import 'base/fonts';
 @import 'base/transitions';
+
+html, body, #cmapp {
+  height: 100%;
+}
+
+#cmapp {
+  div#__layout {
+    height: 100%;
+  }
+}

@@ -1,7 +1,9 @@
 <template>
   <div class="is-flex default-layout">
     <page-header />
-    <Nuxt />
+    <div class="default-layout__content">
+      <Nuxt />
+    </div>
   </div>
 </template>
 
@@ -15,10 +17,14 @@ export default {
 
 <style lang="scss" scoped>
 .default-layout {
-  min-height: 100%;
   flex-direction: column;
+  height: 100%;
   background-image: url(../assets/images/bg.png);
   background-position: top left;
   background-repeat: repeat;
+
+  &__content {
+    flex: 1 0 auto;
+  }
 }
 </style>

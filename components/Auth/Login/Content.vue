@@ -86,6 +86,7 @@
 
 <script>
 import { ValidationObserver, ValidationProvider } from "vee-validate"
+import FormMixin from "@/mixins/form"
 import CmInputField from "@/components/UI/Form/InputField"
 
 export default {
@@ -95,11 +96,11 @@ export default {
     ValidationObserver,
     ValidationProvider,
   },
+  mixins: [FormMixin],
   data() {
     return {
       email: "",
       password: "",
-      error: null,
     }
   },
   computed: {
@@ -124,7 +125,7 @@ export default {
   },
   methods: {
     async submitLogin() {
-      this.error = null
+      this.resetError()
 
       const { email, password } = this
 
@@ -141,7 +142,7 @@ export default {
           } else if (error) {
             const { source, type } = error
 
-            this.error = { source, type }
+            this.setError(source, type)
           }
         }
       } catch (error) {

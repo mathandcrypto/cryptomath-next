@@ -48,4 +48,7 @@ export const actions = {
       throw new Error(error)
     }
   },
+  setData({ commit }, data) {
+    commit(SET_REGISTER_DATA, data)
+  },
 }

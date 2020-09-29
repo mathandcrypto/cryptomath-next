@@ -51,7 +51,10 @@
         >
           <cm-input-field
             v-model="email"
-            :type="{ 'is-danger': errors[0], 'is-success': valid }"
+            :type="{
+              'is-danger': errors[0] || isError('email', 'invalid'),
+              'is-success': valid,
+            }"
             :label="$t('auth.register.fields.email.label')"
             label-for="email"
             input-type="email"
@@ -62,13 +65,16 @@
         <!--  Password  -->
         <ValidationProvider
           v-slot="{ errors, valid }"
-          rules="required"
+          rules="required|min:8"
           tag="div"
           class="mb-4"
         >
           <cm-input-field
             v-model="password"
-            :type="{ 'is-danger': errors[0], 'is-success': valid }"
+            :type="{
+              'is-danger': errors[0] || isError('password', 'invalid'),
+              'is-success': valid,
+            }"
             :label="$t('auth.register.fields.password.label')"
             label-for="password"
             input-type="password"
@@ -85,7 +91,9 @@
         >
           <cm-input-field
             v-model="captchaAnswer"
-            :type="{ 'is-danger': errors[0] }"
+            :type="{
+              'is-danger': errors[0] || isErrorSource('captcha'),
+            }"
             :label="$t('auth.register.fields.captcha.label')"
             label-for="captcha"
             :input-placeholder="$t('auth.register.fields.captcha.placeholder')"
@@ -128,12 +136,23 @@
         </i18n>
       </ValidationObserver>
     </div>
+    <i18n
+      path="auth.register.login.text"
+      tag="div"
+      class="box has-text-centered mt-4"
+    >
+      <nuxt-link slot="link" :to="localePath('/auth/login')">
+        {{ $t("auth.register.login.link") }}
+      </nuxt-link>
+    </i18n>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex"
+import { mapState, mapActions } from "vuex"
 import { ValidationObserver, ValidationProvider } from "vee-validate"
+import { Auth } from "@/api"
+import FormMixin from "@/mixins/form"
 import CmInputField from "@/components/UI/Form/InputField"
 
 export default {
@@ -143,13 +162,13 @@ export default {
     ValidationObserver,
     ValidationProvider,
   },
+  mixins: [FormMixin],
   data() {
     return {
       displayName: "",
       email: "",
       password: "",
       captchaAnswer: "",
-      error: null,
     }
   },
   computed: {
@@ -157,11 +176,70 @@ export default {
       captcha: (state) => state.register.captcha,
     }),
     alertText() {
+      if (this.error) {
+        const { source, type } = this.error
+
+        if (source === "user" && type === "already_exist") {
+          return this.$t("auth.register.alerts.user_already_exist")
+        } else if (source === "captcha" && type === "wrong_answer") {
+          return this.$t("auth.register.fields.captcha.errors.wrong_answer")
+        } else if (type === "invalid") {
+          switch (source) {
+            case "email":
+              return this.$t("auth.register.fields.email.errors.invalid")
+            case "password":
+              return this.$t("auth.register.fields.password.errors.invalid")
+          }
+        }
+
+        return this.$t("auth.register.alerts.internal_error")
+      }
+
       return ""
     },
   },
   methods: {
-    async submitRegister() {},
+    ...mapActions({
+      setData: "register/setData",
+    }),
+    async submitRegister() {
+      this.resetError()
+
+      const { displayName, email, password } = this
+      const payload = {
+        captcha: {
+          token: this.captcha.token,
+          answer: this.captchaAnswer,
+        },
+        displayName,
+        email,
+        password,
+      }
+      const authRegister = Auth.register(this.$axios)
+
+      try {
+        const registerData = await authRegister(payload)
+
+        if (registerData) {
+          const { context, data } = registerData
+          const { success, error } = context
+
+          if (success) {
+            this.setData(data)
+
+            await this.$router.push(
+              this.localePath({ name: "auth-register-confirm" })
+            )
+          } else {
+            const { source, type } = error
+
+            this.setError(source, type)
+          }
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    },
   },
 }
 </script>

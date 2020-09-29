@@ -46,6 +46,10 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
+  globalName: "cmapp",
+  globals: {
+    id: (globalName) => globalName,
+  },
   /*
    ** Global CSS
    */
