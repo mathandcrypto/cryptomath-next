@@ -19,7 +19,7 @@ export default {
 
 <style lang="scss" scoped>
 .register-confirm-section {
-  height: 100%;
+  height: 100vh;
   align-items: center;
 }
 </style>

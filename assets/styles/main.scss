@@ -1,14 +1,12 @@
-@import 'fonts/fonts';
+@import 'fonts';
 @import 'base/colors';
 @import 'base/fonts';
 @import 'base/transitions';
 
-html, body, #cmapp {
+html {
   height: 100%;
 }
 
-#cmapp {
-  div#__layout {
-    height: 100%;
-  }
+body {
+  min-height: 100%;
 }

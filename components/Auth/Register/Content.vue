@@ -270,8 +270,7 @@ export default {
     }
 
     .fields {
-      flex-direction: column;
-      z-index: 2;
+      @extend .caption;
 
       &__button {
         width: 100%;

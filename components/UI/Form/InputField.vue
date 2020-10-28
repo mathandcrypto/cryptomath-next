@@ -1,8 +1,7 @@
 <template>
   <div class="field">
     <label v-if="hasLabel" :for="labelFor" :class="labelClass" class="label">
-      <slot v-if="$slots.label" name="label" />
-      <template v-else>{{ label }}</template>
+      <slot name="label">{{ label }}</slot>
     </label>
     <slot />
     <b-input
@@ -71,7 +70,6 @@ export default {
   data() {
     return {
       newType: this.type,
-      inputValueProxy: this.value,
       _isField: true, // eslint-disable-line
     }
   },
@@ -84,10 +82,9 @@ export default {
     },
     inputValue: {
       get() {
-        return this.inputValueProxy
+        return this.value
       },
       set(value) {
-        this.inputValueProxy = value
         this.$emit("input", value)
       },
     },

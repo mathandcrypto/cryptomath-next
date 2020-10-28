@@ -1,0 +1,11 @@
+@mixin cm-fonts($fonts, $type) {
+  @each $family, $font in $fonts {
+    &__#{$family} {
+      @each $size, $name in $font {
+        &_#{$size} {
+          font-family: $name, $type;
+        }
+      }
+    }
+  }
+}

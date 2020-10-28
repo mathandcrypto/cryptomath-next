@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 .auth-section {
-  height: 100%;
+  height: 100vh;
   align-items: center;
 }
 </style>

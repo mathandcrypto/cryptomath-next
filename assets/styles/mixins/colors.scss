@@ -1,0 +1,19 @@
+@mixin cm-font-colors($colors) {
+  &__font {
+    @each $name, $value in $colors {
+      &_#{$name} {
+        color: $value !important;
+      }
+    }
+  }
+}
+
+@mixin cm-background-colors($colors) {
+  &__background {
+    @each $name, $value in $colors {
+      &_#{$name} {
+        background-color: $value !important;
+      }
+    }
+  }
+}

@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../assets/styles/base/colors";
+@import "../../../assets/styles/variables";
 
 .header-profile {
   align-self: stretch;

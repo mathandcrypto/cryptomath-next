@@ -25,7 +25,7 @@ $navbar-item-active-color: $grey-light;
 $navbar-item-hover-background-color: transparent;
 
 //  Button
-$button-family: "Ubuntu-Medium", sans-serif;
+$button-family: "UbuntuMedium", sans-serif;
 $button-padding-horizontal: 1.5em;
 
 //  Section
@@ -85,7 +85,7 @@ a {
         }
 
         a.navbar-item, .navbar-link {
-          font-family: "Ubuntu-Medium", sans-serif;
+          font-family: "UbuntuMedium", sans-serif;
           font-size: 1.5rem;
         }
       }
@@ -106,7 +106,7 @@ a {
 //  Input styles
 .input {
   transition: border 0.3s;
-  font-family: "Ubuntu-Medium", sans-serif;
+  font-family: "UbuntuMedium", sans-serif;
 }
 
 //  Field styles

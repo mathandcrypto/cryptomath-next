@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../assets/styles/base/colors";
+@import "../../../assets/styles/variables";
 
 .user-avatar {
   width: max-content;

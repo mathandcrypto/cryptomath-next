@@ -1,0 +1,31 @@
+$cm-colors: (
+  "black": #000000,
+  "white": #FFFFFF,
+  "shark": #242729,
+  "mako": #3c4146,
+  "gray-athens": #fafafb,
+  "gray": #999999,
+  "pale-sky": #6a737c,
+  "apple-green": #dcf0e2
+);
+
+$cm-fonts-sans-serif: (
+  "ubuntu": (
+    "light": "UbuntuLight",
+    "regular": "UbuntuRegular",
+    "medium": "UbuntuMedium",
+    "bold": "UbuntuBold",
+  ),
+  "lato": (
+    "light": "LatoLight",
+    "regular": "LatoRegular",
+    "bold": "LatoBold",
+  ),
+);
+
+$cm-fonts-serif: (
+  "georgia": (
+    "regular": "GeorgiaRegular",
+    "bold": "GeorgiaBold",
+  )
+);
